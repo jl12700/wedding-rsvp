@@ -890,16 +890,7 @@
 
   <!--
   ============================================================
-  ENHANCED BACKGROUND AUDIO
-  ─────────────────────────────────────────────────────────────
-  Features:
-  • Hidden offscreen with fixed positioning
-  • Attempts unmuted autoplay at 45% volume
-  • Falls back to muted autoplay if blocked
-  • Shows banner prompting user to tap to unmute
-  • Play/pause and mute/unmute via music button
-  • Works reliably on all browsers including iOS Safari
-  • Uses local music.mp3 file (place next to index.html)
+  BACKGROUND AUDIO
   ============================================================
   -->
   <audio
@@ -1486,7 +1477,6 @@
         if (isConfigured) {
           await fetch(GOOGLE_SHEET_URL, {
             method:  "POST",
-            mode:    "no-cors",
             headers: { "Content-Type": "application/json" },
             body:    JSON.stringify(payload)
           });
@@ -1516,129 +1506,127 @@
     }
 
     /* ============================================================
-       ENHANCED BACKGROUND MUSIC
+       FIXED BACKGROUND MUSIC - PLAYS ON VERCEL
        ─────────────────────────────────────────────────────────
-       Features added:
-       • Hidden offscreen (keeps layout unchanged)
-       • Attempts unmuted autoplay at 45% volume
-       • Falls back to muted autoplay if blocked (iOS requirement)
+       • Always starts with muted autoplay (allowed by all browsers)
        • Shows banner prompting user to tap to unmute
        • Play/pause and mute/unmute via music button
        • Works reliably on all browsers including iOS Safari
     ============================================================ */
-    const audio   = document.getElementById("bgAudio");
-    let isMuted   = false;
+    const audio = document.getElementById("bgAudio");
+    let isMuted = false;
     let isPlaying = false;
 
     // Set initial volume
     audio.volume = 0.45;
 
-    // Attempt autoplay
-    const playPromise = audio.play();
-    
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Successful unmuted autoplay
-          isPlaying = true;
-          syncMusicButton();
-        })
-        .catch(() => {
-          // Autoplay blocked - try muted autoplay (allowed on iOS)
-          tryMutedAutoplay();
-        });
+    // Function to initialize audio - always start with muted autoplay
+    function initAudio() {
+        // Start with muted autoplay (allowed by all browsers)
+        audio.muted = true;
+        
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    // Successful muted autoplay
+                    isMuted = true;
+                    isPlaying = true;
+                    showMutedBanner();
+                    syncMusicButton();
+                })
+                .catch(err => {
+                    console.log("Autoplay failed:", err);
+                    isPlaying = false;
+                    syncMusicButton();
+                });
+        }
     }
 
-    function tryMutedAutoplay() {
-      audio.muted = true;
-      audio.play()
-        .then(() => {
-          isMuted = true;
-          isPlaying = true;
-          showMutedBanner();
-          syncMusicButton();
-        })
-        .catch(() => {
-          // Even muted autoplay failed
-          isPlaying = false;
-          syncMusicButton();
-        });
-    }
+    // Try to initialize audio after page load
+    document.addEventListener("DOMContentLoaded", initAudio);
 
     function showMutedBanner() {
-      const b = document.getElementById("mutedBanner");
-      b.classList.add("show");
-      setTimeout(() => b.classList.remove("show"), 5000);
+        const b = document.getElementById("mutedBanner");
+        b.classList.add("show");
+        setTimeout(() => b.classList.remove("show"), 5000);
     }
 
     // Main toggle function for play/pause and mute/unmute
     function toggleMusic() {
-      if (isMuted) {
-        // Unmute (first tap after muted autoplay)
-        audio.muted = false;
-        audio.volume = 0.45;
-        isMuted = false;
-        isPlaying = true;
-        document.getElementById("mutedBanner").classList.remove("show");
-      } else if (isPlaying) {
-        // Pause
-        audio.pause();
-        isPlaying = false;
-      } else {
-        // Resume playback
-        audio.play()
-          .then(() => {
+        if (isMuted) {
+            // Unmute (first tap after muted autoplay)
+            audio.muted = false;
+            audio.volume = 0.45;
+            isMuted = false;
             isPlaying = true;
-            syncMusicButton();
-          })
-          .catch(err => console.warn("Play blocked:", err));
-        return; // syncMusicButton will be called via playing event
-      }
-      syncMusicButton();
+            document.getElementById("mutedBanner").classList.remove("show");
+        } else if (isPlaying) {
+            // Pause
+            audio.pause();
+            isPlaying = false;
+        } else {
+            // Resume playback
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    syncMusicButton();
+                })
+                .catch(err => console.warn("Play blocked:", err));
+            return;
+        }
+        syncMusicButton();
     }
 
     // Update button UI based on current state
     function syncMusicButton() {
-      const btn     = document.getElementById("musicBtn");
-      const icon    = document.getElementById("musicIcon");
-      const tooltip = document.getElementById("musicTooltip");
-      
-      if (isMuted) {
-        icon.textContent = "🔇";
-        tooltip.textContent = "Unmute Music";
-        btn.classList.add("muted");
-      } else if (isPlaying) {
-        icon.textContent = "♫";
-        tooltip.textContent = "Pause Music";
-        btn.classList.remove("muted");
-        btn.style.borderColor = "rgba(201,168,108,0.7)";
-      } else {
-        icon.textContent = "♪";
-        tooltip.textContent = "Play Music";
-        btn.classList.remove("muted");
-        btn.style.borderColor = "rgba(201,168,108,0.4)";
-      }
+        const btn     = document.getElementById("musicBtn");
+        const icon    = document.getElementById("musicIcon");
+        const tooltip = document.getElementById("musicTooltip");
+        
+        if (isMuted) {
+            icon.textContent = "🔇";
+            tooltip.textContent = "Unmute Music";
+            btn.classList.add("muted");
+        } else if (isPlaying) {
+            icon.textContent = "♫";
+            tooltip.textContent = "Pause Music";
+            btn.classList.remove("muted");
+            btn.style.borderColor = "rgba(201,168,108,0.7)";
+        } else {
+            icon.textContent = "♪";
+            tooltip.textContent = "Play Music";
+            btn.classList.remove("muted");
+            btn.style.borderColor = "rgba(201,168,108,0.4)";
+        }
     }
 
     // Event listeners to keep UI in sync
     audio.addEventListener("pause", () => {
-      if (!isMuted) {
-        isPlaying = false;
-        syncMusicButton();
-      }
+        if (!isMuted) {
+            isPlaying = false;
+            syncMusicButton();
+        }
     });
     
     audio.addEventListener("playing", () => {
-      isPlaying = true;
-      syncMusicButton();
+        isPlaying = true;
+        syncMusicButton();
+    });
+    
+    audio.addEventListener("volumechange", () => {
+        if (!audio.muted && audio.volume > 0) {
+            isMuted = false;
+            syncMusicButton();
+        }
     });
     
     // Handle audio errors
     audio.addEventListener("error", (e) => {
-      console.error("Audio error:", e);
-      // Optionally show error message to user
-      const tooltip = document.getElementById("musicTooltip");
-      tooltip.textContent = "Audio unavailable";
+        console.error("Audio error:", e);
+        const tooltip = document.getElementById("musicTooltip");
+        tooltip.textContent = "Audio unavailable";
     });
   </script>
 </body>
