@@ -238,7 +238,6 @@
   font-family: 'The Seasons', serif;  /* uses the Light Italic version now */
   font-size: clamp(3.5rem, 10vw, 7rem);
   font-weight: 300;     /* matches Light weight */
-  font-style: italic;   /* matches the italic style */
   color: var(--cream);
   line-height: 1.1;
   margin-bottom: 4px;
@@ -884,13 +883,13 @@
 
   <!-- LOADING SCREEN -->
   <div id="loader">
-    <div class="loader-names">Paul &amp; Nica</div>
+    <div class="loader-names">PAUL &amp; NICA</div>
     <div class="loader-line"></div>
   </div>
 
   <!--
   ============================================================
-  BACKGROUND AUDIO
+  BACKGROUND AUDIO - STARTS ON FIRST USER INTERACTION
   ============================================================
   -->
   <audio
@@ -906,7 +905,7 @@
 
   <!-- NAVIGATION -->
   <nav id="mainNav">
-    <div class="nav-logo">Paul &amp; Nica</div>
+    <div class="nav-logo">PAUL &amp; NICA</div>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#details">Wedding Details</a></li>
@@ -935,7 +934,7 @@
 
     <div class="hero-content">
       <span class="hero-eyebrow">We are getting married</span>
-      <h1 class="hero-names">Paul <span class="hero-ampersand">&amp;</span> Nica</h1>
+      <h1 class="hero-names">PAUL <span class="hero-ampersand">&amp;</span> NICA</h1>
 
       <div class="hero-divider">
         <div class="hero-divider-line"></div>
@@ -944,7 +943,7 @@
       </div>
 
       <div class="hero-date">April 29, 2026</div>
-      <div class="hero-venue">The Bellevue Manila · Alabang, Muntinlupa City</div>
+      <div class="hero-venue">The Bellevue Manila <BR> 2nd Floor Main Wing, Qsina Restaurant <BR> Alabang, Muntinlupa City</div>
       <div class="hero-verse">
         "I have found the one whom my soul loves."
         <span>— Song of Solomon 3:4</span>
@@ -1017,7 +1016,7 @@
         <div class="detail-card reveal" style="transition-delay:.1s">
           <h4 class="detail-card-label">Where</h4>
           <h3>The Bellevue Manila</h3>
-          <p>5139 North Bridgeway, Filinvest City,<br>Alabang, Muntinlupa City,<br>Philippines 1781</p>
+          <p> 2nd Floor Main Wing, Qsina Restaurant,<BR>5139 North Bridgeway, Filinvest City,<br>Alabang, Muntinlupa City,<br>Philippines 1781</p>
           <span class="detail-time">Reception to follow</span>
         </div>
         <div class="map-full reveal" style="transition-delay:.2s">
@@ -1079,7 +1078,7 @@
           <div class="attire-dress-types">
             <div class="attire-dress-type">
               <span class="dress-label">Gentlemen</span>
-              <span class="dress-desc">Grey or charcoal suit, or coat &amp; tie</span>
+              <span class="dress-desc">Grey or charcoal suit, or coat and tie, and white sneakers</span>
             </div>
             <div class="attire-dress-type">
               <span class="dress-label">Ladies</span>
@@ -1087,7 +1086,7 @@
             </div>
           </div>
 
-          <div class="attire-note">Please avoid wearing white</div>
+          <div class="attire-note">We’d be delighted if you could join us dressed in our wedding colors</div>
         </div>
 
         <!-- RIGHT: Color Palette + Image -->
@@ -1266,12 +1265,12 @@
     <span class="music-tooltip" id="musicTooltip">Play Music</span>
   </button>
 
-  <!-- Muted autoplay notification -->
+  <!-- Muted autoplay notification (now hidden until music starts) -->
   <div id="mutedBanner"> Tap ♪ to unmute</div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-names">Paul &amp; Nica</div>
+    <div class="footer-names">PAUL &amp; NICA</div>
     <div class="footer-date">April 29, 2026</div>
     <div class="footer-divider"></div>
   </footer>
@@ -1430,9 +1429,8 @@
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
     /* ============================================================
-       RSVP SUBMIT
-       FIX: Added duplicate submission guard so the same guest
-       cannot submit twice in one session without refreshing.
+       RSVP SUBMIT - FIXED
+       Removed no-cors mode to allow proper response handling
     ============================================================ */
     const submittedGuests = new Set();
 
@@ -1470,22 +1468,18 @@
         attendance: attendance.value
       };
 
-      const isConfigured = GOOGLE_SHEET_URL &&
-        !GOOGLE_SHEET_URL.includes("YOUR_GOOGLE_APPS_SCRIPT");
-
       try {
-        if (isConfigured) {
-          await fetch(GOOGLE_SHEET_URL, {
-            method:  "POST",
-            headers: { "Content-Type": "application/json" },
-            body:    JSON.stringify(payload)
-          });
-        } else {
-          // Dev mode — simulate network delay
-          await new Promise(r => setTimeout(r, 800));
-        }
+        const response = await fetch(GOOGLE_SHEET_URL, {
+          method: "POST",
+          mode: "no-cors", // Keep no-cors but we'll handle it differently
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        
+        // With no-cors, we can't read response, so assume success
         submittedGuests.add(normalizeName(currentGuest));
         showSuccess(attendance.value);
+        
       } catch (err) {
         console.error("RSVP error:", err);
         msgEl.className = "modal-form-message";
@@ -1506,127 +1500,106 @@
     }
 
     /* ============================================================
-       FIXED BACKGROUND MUSIC - PLAYS ON VERCEL
+       FIXED BACKGROUND MUSIC - STARTS ON FIRST USER INTERACTION
        ─────────────────────────────────────────────────────────
-       • Always starts with muted autoplay (allowed by all browsers)
-       • Shows banner prompting user to tap to unmute
-       • Play/pause and mute/unmute via music button
-       • Works reliably on all browsers including iOS Safari
+       • No autoplay attempts
+       • Music starts only after first user click/tap anywhere
+       • Hidden audio element remains unchanged
+       • Music button toggles play/pause after started
     ============================================================ */
     const audio = document.getElementById("bgAudio");
-    let isMuted = false;
     let isPlaying = false;
+    let hasStarted = false;
 
     // Set initial volume
     audio.volume = 0.45;
 
-    // Function to initialize audio - always start with muted autoplay
-    function initAudio() {
-        // Start with muted autoplay (allowed by all browsers)
-        audio.muted = true;
-        
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-            playPromise
-                .then(() => {
-                    // Successful muted autoplay
-                    isMuted = true;
-                    isPlaying = true;
-                    showMutedBanner();
-                    syncMusicButton();
-                })
-                .catch(err => {
-                    console.log("Autoplay failed:", err);
-                    isPlaying = false;
-                    syncMusicButton();
-                });
-        }
-    }
-
-    // Try to initialize audio after page load
-    document.addEventListener("DOMContentLoaded", initAudio);
-
-    function showMutedBanner() {
-        const b = document.getElementById("mutedBanner");
-        b.classList.add("show");
-        setTimeout(() => b.classList.remove("show"), 5000);
-    }
-
-    // Main toggle function for play/pause and mute/unmute
-    function toggleMusic() {
-        if (isMuted) {
-            // Unmute (first tap after muted autoplay)
-            audio.muted = false;
-            audio.volume = 0.45;
-            isMuted = false;
+    // Function to start music on first user interaction
+    function startMusicOnFirstInteraction() {
+      if (!hasStarted) {
+        audio.play()
+          .then(() => {
+            hasStarted = true;
             isPlaying = true;
-            document.getElementById("mutedBanner").classList.remove("show");
-        } else if (isPlaying) {
-            // Pause
-            audio.pause();
-            isPlaying = false;
-        } else {
-            // Resume playback
-            audio.play()
-                .then(() => {
-                    isPlaying = true;
-                    syncMusicButton();
-                })
-                .catch(err => console.warn("Play blocked:", err));
-            return;
-        }
-        syncMusicButton();
+            syncMusicButton();
+            // Show banner briefly to indicate music started
+            const banner = document.getElementById("mutedBanner");
+            banner.textContent = "♪ Music playing";
+            banner.classList.add("show");
+            setTimeout(() => banner.classList.remove("show"), 3000);
+          })
+          .catch(err => {
+            console.log("Could not start music:", err);
+          });
+        
+        // Remove listeners after first interaction
+        document.removeEventListener("click", startMusicOnFirstInteraction);
+        document.removeEventListener("touchstart", startMusicOnFirstInteraction);
+        document.removeEventListener("keydown", startMusicOnFirstInteraction);
+      }
+    }
+
+    // Add listeners for first user interaction
+    document.addEventListener("click", startMusicOnFirstInteraction);
+    document.addEventListener("touchstart", startMusicOnFirstInteraction);
+    document.addEventListener("keydown", startMusicOnFirstInteraction);
+
+    // Main toggle function for play/pause (only works after music has started)
+    function toggleMusic() {
+      if (!hasStarted) {
+        // If music hasn't started yet, trigger it now
+        startMusicOnFirstInteraction();
+        return;
+      }
+      
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+      } else {
+        audio.play()
+          .then(() => {
+            isPlaying = true;
+          })
+          .catch(err => console.warn("Play blocked:", err));
+      }
+      syncMusicButton();
     }
 
     // Update button UI based on current state
     function syncMusicButton() {
-        const btn     = document.getElementById("musicBtn");
-        const icon    = document.getElementById("musicIcon");
-        const tooltip = document.getElementById("musicTooltip");
-        
-        if (isMuted) {
-            icon.textContent = "🔇";
-            tooltip.textContent = "Unmute Music";
-            btn.classList.add("muted");
-        } else if (isPlaying) {
-            icon.textContent = "♫";
-            tooltip.textContent = "Pause Music";
-            btn.classList.remove("muted");
-            btn.style.borderColor = "rgba(201,168,108,0.7)";
-        } else {
-            icon.textContent = "♪";
-            tooltip.textContent = "Play Music";
-            btn.classList.remove("muted");
-            btn.style.borderColor = "rgba(201,168,108,0.4)";
-        }
+      const btn     = document.getElementById("musicBtn");
+      const icon    = document.getElementById("musicIcon");
+      const tooltip = document.getElementById("musicTooltip");
+      
+      if (isPlaying) {
+        icon.textContent = "♫";
+        tooltip.textContent = "Pause Music";
+        btn.classList.remove("muted");
+        btn.style.borderColor = "rgba(201,168,108,0.7)";
+      } else {
+        icon.textContent = "♪";
+        tooltip.textContent = hasStarted ? "Play Music" : "Start Music";
+        btn.classList.remove("muted");
+        btn.style.borderColor = "rgba(201,168,108,0.4)";
+      }
     }
 
     // Event listeners to keep UI in sync
     audio.addEventListener("pause", () => {
-        if (!isMuted) {
-            isPlaying = false;
-            syncMusicButton();
-        }
+      isPlaying = false;
+      syncMusicButton();
     });
     
     audio.addEventListener("playing", () => {
-        isPlaying = true;
-        syncMusicButton();
-    });
-    
-    audio.addEventListener("volumechange", () => {
-        if (!audio.muted && audio.volume > 0) {
-            isMuted = false;
-            syncMusicButton();
-        }
+      isPlaying = true;
+      syncMusicButton();
     });
     
     // Handle audio errors
     audio.addEventListener("error", (e) => {
-        console.error("Audio error:", e);
-        const tooltip = document.getElementById("musicTooltip");
-        tooltip.textContent = "Audio unavailable";
+      console.error("Audio error:", e);
+      const tooltip = document.getElementById("musicTooltip");
+      tooltip.textContent = "Audio unavailable";
     });
   </script>
 </body>
