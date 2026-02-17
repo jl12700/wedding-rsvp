@@ -5,6 +5,14 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'The Seasons';
+  src: url('the_seasons_light_italic-webfont.woff') format('woff');
+  font-weight: 300;       /* Light weight */
+  font-style: italic;     /* Italic style */
+}
+
+
 @font-face { font-family: Amsterdam; src: url('../fonts/AmsterdamOne.ttf'); } 
 /* =======================================================
 *
