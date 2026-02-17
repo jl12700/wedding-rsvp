@@ -1,254 +1,1613 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shyam ❤️ Rincy - 29.10.2023</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="We are getting hitched - The dates are 21st & 29th of October '23 and we would like you to be a part of it." />
-	<meta name="keywords" content="shyam,rincy,wedding,website,rsvp" />
-	<meta name="author" content="Shyam & Rincy" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paul &amp; Nica · April 29, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:image" content="images/og.jpg"/>
-	<meta property="og:site_name" content="Shyam ❤️ Rincy - 29.10.2023">
-    <meta property="og:title" content="Shyam ❤️ Rincy - 29.10.2023">
-    <meta property="og:description" content="We are getting hitched - The dates are 21st & 29th of October '23 and we would like you to be a part of it.">
-	<!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
-    <meta property="og:image:width" content="300">
-    <meta property="og:image:height" content="300">
-    <!-- Website to visit when clicked in fb or WhatsApp-->
-    <meta property="og:url" content="https://we.shyamjos.com">
-	<meta property="og:type" content="website"/>
-    <meta property="og:image:type" content="image/jpeg">
+  <style>
+    /* ================================================
+       CSS VARIABLES & RESET
+    ================================================ */
+    :root {
+      --cream: #faf6f1;
+      --parchment: #f2ebe0;
+      --blush: #e8c8be;
+      --rose: #c97d7d;
+      --dusty-rose: #b56b6b;
+      --gold: #c9a86c;
+      --deep-gold: #a07840;
+      --sage: #8fa88e;
+      --charcoal: #3a3530;
+      --warm-gray: #6b6460;
+      --light-border: rgba(201, 168, 108, 0.3);
+      --section-pad: 100px;
+      --attend-green: #4a7c59;
+      --attend-green-light: #f0f8f0;
+      --attend-green-border: #b8d8b8;
+      --decline-red: #a04a4a;
+      --decline-red-light: #fdf0f0;
+      --decline-red-border: #e0b8b8;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
 
-	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia+Sans+Condensed" rel="stylesheet">
-	
-	<!-- clock   -->
-	<link rel="stylesheet" href="css/responsive-clock.css">
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css'>
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+    /* ================================================
+       LOADING SCREEN
+    ================================================ */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--cream);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-style: italic;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+    .loader-line {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      animation: loaderExpand 1.5s ease infinite;
+    }
+    @keyframes loaderExpand {
+      0%,100% { width: 60px; opacity: 0.4; }
+      50%      { width: 120px; opacity: 1; }
+    }
 
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+    /* ================================================
+       NAVIGATION
+    ================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(250,246,241,0.97);
+      padding: 14px 40px;
+      box-shadow: 0 1px 20px rgba(58,53,48,0.08);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--cream);
+      letter-spacing: 0.03em;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,246,241,0.85);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    nav.scrolled .nav-links a { color: var(--warm-gray); }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--gold); }
 
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+    nav.scrolled .hamburger span { background: var(--charcoal); }
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .mobile-nav .close-nav {
+      position: absolute; top: 24px; right: 30px;
+      font-size: 1.8rem;
+      color: var(--warm-gray);
+      cursor: pointer;
+      background: none; border: none;
+    }
 
-	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-	
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li class="active"><a href="#fh5co-event">Events</a></li>
-						<li class="active"><a href="#fh5co-gallery">Gallery</a></li>
-						<li class="active"><a href="#fh5co-services">Highlights</a></li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
-	</nav>
+    /* ================================================
+       HERO SECTION
+       FIX: Removed excessive top padding — content
+       is now truly vertically centred in the viewport.
+       The nav is fixed/overlay so no offset needed.
+    ================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,108,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,200,190,0.1) 0%, transparent 50%),
+        linear-gradient(160deg, #2a2520 0%, #3a3530 40%, #2e2a26 100%);
+    }
 
-	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Shyam &amp; Rincy</h1>
-							<br>
-							<img src="images/fprint.png" alt="Shyam + Rincy"> 
-							<h2>29.10.2023</h2>
-							<h2>"I have found the one whom my soul loves." <br>Song of Solomon 3:4</h2>
-							<div class="flipTimebox">
-								<div class="clock clock-fix"></div>
-							  </div>
-							<p><a href="#fh5co-event" class="btn btn-default btn-sm">Save our date</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+    /* Hero divider */
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 20px 0;           /* FIX: tightened from 28px */
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.7s forwards;
+    }
+    .hero-divider-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .hero-divider-line:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+    .hero-divider-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); }
 
+    /* FIX: Hero content — balanced padding, no extra top offset */
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 0 24px;           /* FIX: removed asymmetric 80px top/bottom padding */
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;       /* FIX: reduced from 28px */
+      display: block;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.3s forwards;
+    }
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 4px;        /* FIX: reduced from 6px */
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+    .hero-ampersand { color: var(--gold); font-size: 0.8em; }
+    .hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      letter-spacing: 0.3em;
+      color: rgba(250,246,241,0.7);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.9s forwards;
+    }
+    .hero-venue {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: rgba(250,246,241,0.55);
+      font-style: italic;
+      margin-bottom: 24px;       /* FIX: reduced from 36px */
+      opacity: 0;
+      animation: fadeUp 0.9s ease 1s forwards;
+    }
+    .hero-verse {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-style: italic;
+      color: rgba(250,246,241,0.6);
+      margin-bottom: 32px;       /* FIX: reduced from 48px */
+      opacity: 0;
+      animation: fadeUp 0.9s ease 1.1s forwards;
+    }
+    .hero-verse span {
+      display: block; font-style: normal;
+      font-size: 0.8em; letter-spacing: 0.1em;
+      margin-top: 6px; color: var(--gold);
+    }
+    .countdown-wrap { opacity: 0; animation: fadeUp 0.9s ease 1.2s forwards; }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(12px, 3vw, 32px);
+      margin-bottom: 36px;       /* FIX: reduced from 48px */
+    }
+    .countdown-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .countdown-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      min-width: 60px;
+      text-align: center;
+    }
+    .countdown-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .countdown-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+      align-self: flex-start;
+      padding-top: 4px;
+      opacity: 0.5;
+    }
+    .hero-cta {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border: 1px solid rgba(201,168,108,0.5);
+      padding: 16px 36px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 1.4s forwards;
+    }
+    .hero-cta:hover { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeUp 0.9s ease 1.8s forwards;
+      z-index: 3;
+    }
+    .scroll-hint span {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.2em; color: rgba(250,246,241,0.4); text-transform: uppercase;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(201,168,108,0.6), transparent);
+      animation: scrollDrop 1.8s ease infinite;
+    }
+    @keyframes scrollDrop {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-	<div id="fh5co-event" class="fh5co-bg">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2>Events</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Betrothal</h3>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>21 October 2023</span>
-									</div>
-									<div class="event-col">
+    /* ================================================
+       SHARED SECTION STYLES
+    ================================================ */
+    section { padding: var(--section-pad) 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+    .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); text-align: center;
+      display: block; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 300; font-style: italic;
+      color: var(--charcoal); text-align: center;
+      line-height: 1.2; margin-bottom: 20px;
+    }
+    .section-divider {
+      display: flex; align-items: center;
+      justify-content: center; gap: 12px; margin-bottom: 60px;
+    }
+    .section-divider-line { width: 60px; height: 1px; background: var(--light-border); }
+    .section-divider-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
 
-										<i class="icon-clock"></i>
-										<span>11:30 AM</span>
-									</div>
-									<p>At <b>St. Vincent De Paul Church Edathotty, Kannur.</b> Followed by lunch at <b>Robin's Wedding Cafe, Edathotty.</b></p>
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.673315773661!2d75.71257847590881!3d11.927808088299846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba5cd2b69442ebf%3A0x41b4e77a403a15b4!2sDe%20Paul%20Church%2C%20Edathotty!5e0!3m2!1sen!2sin!4v1696094112600!5m2!1sen!2sin" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 text-center">
-								<div class="event-wrap animate-box">
-									<h3>Wedding</h3>
-									<div class="event-col">
-										<i class="icon-calendar"></i>
-										<span>29 October 2023</span>
-									</div>
-									<div class="event-col">
+    /* Lily-enhanced divider for body sections */
+    .section-divider-lily {
+      display: flex; align-items: center;
+      justify-content: center; gap: 10px; margin-bottom: 60px;
+    }
+    .section-divider-lily .sdl-line { width: 50px; height: 1px; background: var(--light-border); }
+    .section-divider-lily .sdl-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink:0; }
+    .section-divider-lily svg { width: 24px; opacity: 0.5; }
 
-										<i class="icon-clock"></i>
-										<span>12:00 PM</span>
-									</div>
-									<p>At <b>St. Antony's Church Cheriyappilly, North Paravur.</b> Followed by lunch at <b>IMA Hall, North Paravur</b></p>
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.690238117892!2d76.24293817588756!3d10.124421489987455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0810402ea732f5%3A0x7e23209bf83c2a9b!2sSt.Antony&#39;s%20Roman%20Catholic%20Church!5e0!3m2!1sen!2sin!4v1696094216568!5m2!1sen!2sin" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ================================================
+       WEDDING DETAILS SECTION
+    ================================================ */
+    #details { background: var(--parchment); position: relative; }
+    #details::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--light-border), transparent);
+    }
+    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 48px; }
+    .detail-card {
+      background: var(--cream);
+      border: 1px solid var(--light-border);
+      padding: 40px 36px;
+      position: relative;
+    }
+    .detail-card::before {
+      content: ''; position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1px solid rgba(201,168,108,0.15); pointer-events: none;
+    }
+    .detail-card-label {
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .detail-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--charcoal); margin-bottom: 12px;
+    }
+    .detail-card p { font-size: 0.95rem; color: var(--warm-gray); line-height: 1.6; }
+    .detail-time {
+      display: inline-block; margin-top: 12px;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; color: var(--rose); text-transform: uppercase;
+    }
+    .map-full { grid-column: 1 / -1; }
+    .directions-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-style: italic;
+      color: var(--charcoal); margin-bottom: 10px; text-align: center;
+    }
+    .directions-sub { font-size: 0.95rem; color: var(--warm-gray); text-align: center; margin-bottom: 32px; }
+    .map-container {
+      position: relative; width: 100%;
+      padding-bottom: 42%;
+      border: 1px solid var(--light-border);
+      overflow: hidden; border-radius: 4px;
+    }
+    .map-container iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0; display: block;
+    }
 
-	<div id="fh5co-gallery" class="fh5co-section-gray">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2>Gallery</h2>
-				</div>
-			</div>
-			<div class="row row-bottom-padded-md">
-				<div class="col-md-12">
-					<ul id="fh5co-gallery-list">
-						
-						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/RS1.jpg); "> 
-						<a href="images/RS1.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
+    /* ================================================
+       WEDDING ATTIRE SECTION
+    ================================================ */
+    #attire { background: var(--cream); }
+    .attire-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .attire-info-col {
+      background: var(--parchment);
+      border: 1px solid var(--light-border);
+      padding: 48px 40px;
+      position: relative;
+    }
+    .attire-info-col::before {
+      content: ''; position: absolute;
+      top: 12px; left: 12px; right: 12px; bottom: 12px;
+      border: 1px solid rgba(201,168,108,0.2); pointer-events: none;
+    }
+    .attire-section-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; display: block;
+    }
+    .attire-info-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-style: italic;
+      color: var(--charcoal); margin-bottom: 18px;
+    }
+    .attire-info-col p {
+      font-size: 1rem; color: var(--warm-gray);
+      line-height: 1.8; margin-bottom: 12px;
+    }
+    .attire-dress-types {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin: 20px 0 24px;
+    }
+    .attire-dress-type {
+      border: 1px solid var(--light-border);
+      padding: 16px; text-align: center; background: var(--cream);
+    }
+    .dress-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--charcoal); display: block; margin-bottom: 4px;
+    }
+    .dress-desc { font-size: 0.85rem; color: var(--warm-gray); font-style: italic; }
+    .attire-note {
+      display: inline-block;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--dusty-rose);
+      border: 1px solid rgba(201,120,120,0.3);
+      padding: 8px 16px;
+    }
+    .attire-palette-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .attire-palette-box {
+      background: var(--parchment);
+      border: 1px solid var(--light-border);
+      padding: 36px 32px;
+      position: relative;
+    }
+    .attire-palette-box::before {
+      content: ''; position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1px solid rgba(201,168,108,0.15); pointer-events: none;
+    }
+    .attire-palette-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-style: italic;
+      color: var(--charcoal); margin-bottom: 22px; text-align: center;
+    }
+    .palette-group { margin-bottom: 22px; }
+    .palette-group:last-child { margin-bottom: 0; }
+    .palette-group-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--warm-gray); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .palette-group-label::after { content: ''; flex: 1; height: 1px; background: var(--light-border); }
+    .palette-swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+    .swatch-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .swatch-circle {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(58,53,48,0.12);
+      flex-shrink: 0;
+    }
+    .swatch-name {
+      font-family: 'Cinzel', serif; font-size: 0.46rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--warm-gray); text-align: center; line-height: 1.3;
+    }
+    .attire-ref-img {
+      overflow: hidden;
+      border-radius: 6px;
+    }
+    .attire-ref-img img {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+    }
 
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/RS2.jpg); "> 
-						<a href="images/RS2.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
-					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/RS3.jpg); "> 
-						<a href="images/RS3.jpg">
-							<div class="case-studies-summary">
-							</div>
-						</a>
-					</li>
-					
-					</ul>		
-				</div>
-			</div>
-		</div>
-	</div>
+    /* ================================================
+       RSVP SECTION
+    ================================================ */
+    #rsvp { background: var(--charcoal); position: relative; overflow: hidden; }
+    #rsvp::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 80%, rgba(201,168,108,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(232,200,190,0.06) 0%, transparent 50%);
+    }
+    #rsvp .section-title { color: var(--cream); }
+    #rsvp .section-divider-line { background: rgba(201,168,108,0.25); }
+    #rsvp .section-divider-lily .sdl-line { background: rgba(201,168,108,0.25); }
+    #rsvp .section-divider-lily svg { opacity: 0.35; filter: invert(0.9) sepia(0.2); }
+    .rsvp-intro {
+      font-family: 'EB Garamond', serif; font-size: 1.05rem;
+      color: rgba(250,246,241,0.65); text-align: center;
+      font-style: italic; margin-bottom: 52px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+    .rsvp-form-wrap { max-width: 520px; margin: 0 auto; position: relative; z-index: 2; }
+    .rsvp-input-group { display: flex; gap: 0; }
+    .rsvp-input {
+      flex: 1; padding: 18px 24px;
+      background: rgba(250,246,241,0.06);
+      border: 1px solid rgba(201,168,108,0.3); border-right: none;
+      color: var(--cream);
+      font-family: 'EB Garamond', serif; font-size: 1rem;
+      outline: none; transition: border-color 0.3s, background 0.3s;
+    }
+    .rsvp-input::placeholder { color: rgba(250,246,241,0.3); }
+    .rsvp-input:focus { border-color: var(--gold); background: rgba(250,246,241,0.09); }
+    .rsvp-btn {
+      padding: 18px 32px;
+      background: var(--gold); color: var(--charcoal);
+      border: 1px solid var(--gold);
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
+    }
+    .rsvp-btn:hover { background: var(--deep-gold); border-color: var(--deep-gold); }
+    .rsvp-message { text-align: center; margin-top: 20px; font-size: 0.95rem; min-height: 24px; }
+    .rsvp-message.error { color: var(--blush); font-style: italic; }
+    .rsvp-message.success { color: #a8d8a8; font-style: italic; }
 
+    /* ================================================
+       RSVP MODAL
+    ================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(30,26,22,0.88);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--cream);
+      padding: 44px 48px;
+      max-width: 500px; width: 100%;
+      border-radius: 12px;
+      position: relative;
+      transform: translateY(30px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      max-height: 90vh; overflow-y: auto;
+      margin: auto;
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none;
+      font-size: 1.2rem; color: var(--warm-gray);
+      cursor: pointer; line-height: 1;
+      transition: color 0.2s, transform 0.2s, background 0.2s;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+    }
+    .modal-close:hover { color: var(--charcoal); background: var(--parchment); transform: rotate(90deg); }
+    .modal-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--light-border); }
+    .modal-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px; display: block;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-style: italic; color: var(--charcoal);
+    }
+    .modal-guest-name { color: var(--gold); font-weight: 500; }
+    .modal-form { display: flex; flex-direction: column; gap: 18px; }
+    .input-group { display: flex; flex-direction: column; gap: 6px; }
+    .input-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray);
+    }
+    .modal-input {
+      padding: 13px 16px;
+      background: var(--parchment);
+      border: 1.5px solid var(--light-border); border-radius: 6px;
+      color: var(--charcoal);
+      font-family: 'EB Garamond', serif; font-size: 1rem;
+      outline: none; transition: border-color 0.3s, box-shadow 0.3s; width: 100%;
+    }
+    .modal-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,108,0.12); }
+    .modal-input::placeholder { color: var(--warm-gray); opacity: 0.6; }
+    .attendance-label {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray);
+      margin-bottom: 10px; display: block;
+    }
+    .attendance-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .attendance-option input[type="radio"] { display: none; }
 
+    .attendance-option.attend-yes label {
+      display: block; text-align: center;
+      padding: 14px 10px;
+      border: 1.5px solid var(--attend-green-border);
+      border-radius: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--attend-green);
+      cursor: pointer; transition: all 0.25s ease;
+      background: var(--attend-green-light);
+    }
+    .attendance-option.attend-yes input:checked + label {
+      background: var(--attend-green);
+      border-color: var(--attend-green);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(74,124,89,0.25);
+    }
+    .attendance-option.attend-yes label:hover { border-color: var(--attend-green); background: #e0f0e0; }
 
-	<div id="fh5co-services" class="fh5co-section-gray">
-		<div class="container">
-			
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Highlights</h2>
+    .attendance-option.attend-no label {
+      display: block; text-align: center;
+      padding: 14px 10px;
+      border: 1.5px solid var(--decline-red-border);
+      border-radius: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--decline-red);
+      cursor: pointer; transition: all 0.25s ease;
+      background: var(--decline-red-light);
+    }
+    .attendance-option.attend-no input:checked + label {
+      background: var(--decline-red);
+      border-color: var(--decline-red);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(160,74,74,0.25);
+    }
+    .attendance-option.attend-no label:hover { border-color: var(--decline-red); background: #f8e0e0; }
 
-				</div>
-			</div>
+    .modal-submit {
+      width: 100%; padding: 15px;
+      background: var(--charcoal); color: var(--cream);
+      border: none; border-radius: 8px;
+      font-family: 'Cinzel', serif; font-size: 0.68rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s ease; margin-top: 4px;
+    }
+    .modal-submit:hover { background: var(--gold); color: var(--charcoal); }
+    .modal-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+    .modal-form-message {
+      text-align: center; font-style: italic;
+      font-size: 0.88rem; color: var(--decline-red); min-height: 20px;
+    }
+    .modal-form-message.sending { color: var(--warm-gray); }
+    .modal-success { text-align: center; display: none; padding: 20px 0; }
+    .modal-success.show { display: block; }
+    .modal-success-icon { font-size: 2.8rem; margin-bottom: 18px; }
+    .modal-success h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-style: italic;
+      color: var(--charcoal); margin-bottom: 14px;
+    }
+    .modal-success p { color: var(--warm-gray); font-size: 0.95rem; line-height: 1.7; }
+    .close-success-btn {
+      display: inline-block; margin-top: 20px;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); cursor: pointer;
+      border: none; border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px; background: none;
+    }
 
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+      background: var(--charcoal); padding: 60px 32px;
+      text-align: center; border-top: 1px solid rgba(201,168,108,0.15);
+      position: relative; overflow: hidden;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-style: italic; color: var(--cream); margin-bottom: 12px;
+    }
+    .footer-date {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.25em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .footer-divider { width: 60px; height: 1px; background: rgba(201,168,108,0.3); margin: 28px auto; }
+    .footer-copy { font-size: 0.8rem; color: rgba(250,246,241,0.3); letter-spacing: 0.05em; }
 
+    /* ================================================
+       FLOATING BUTTONS
+    ================================================ */
+    #scrollTop {
+      position: fixed; bottom: 90px; right: 24px;
+      width: 46px; height: 46px;
+      background: var(--charcoal);
+      border: 1px solid rgba(201,168,108,0.4);
+      color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 500; border-radius: 4px;
+      opacity: 0; visibility: hidden; transform: translateY(12px);
+      transition: all 0.4s ease; font-size: 1.1rem;
+    }
+    #scrollTop.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    #scrollTop:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); transform: translateY(-3px); }
 
-				<div class="container animate-box">
-					<div class="fh5co-video fh5co-bg" style="background-image: url(images/img_bg_3.jpg); ">
-						<a href="#" class="popup-vimeo"><i class="icon-video2"></i></a>
-						<div class="overlay"></div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
+    /* ================================================
+       MUSIC BUTTON
+    ================================================ */
+    #musicBtn {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 46px; height: 46px;
+      background: var(--charcoal);
+      border: 1px solid rgba(201,168,108,0.4);
+      color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 500; border-radius: 4px;
+      font-size: 1.1rem; transition: all 0.3s ease;
+    }
+    #musicBtn:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+    #musicBtn.muted { border-color: rgba(201,168,108,0.25); opacity: 0.75; }
+    .music-tooltip {
+      position: absolute; right: 54px; bottom: 50%;
+      transform: translateY(50%);
+      background: var(--charcoal); color: rgba(250,246,241,0.9);
+      padding: 6px 12px; border-radius: 3px;
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.1em; white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    #musicBtn:hover .music-tooltip { opacity: 1; }
 
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-    <!-- clock -->
-	<script src="js/clock.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- countTo -->
-	<script src="js/jquery.countTo.js"></script>
-	<script src='https://momentjs.com/downloads/moment.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js'></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.js'></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+    /* Muted autoplay banner */
+    #mutedBanner {
+      position: fixed; bottom: 80px; right: 80px;
+      background: rgba(58,53,48,0.96); color: rgba(250,246,241,0.9);
+      padding: 10px 14px;
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.08em; border-radius: 4px;
+      border: 1px solid rgba(201,168,108,0.35);
+      z-index: 499; max-width: 180px; text-align: center;
+      opacity: 0; visibility: hidden; transform: translateY(6px);
+      transition: all 0.4s ease; pointer-events: none;
+    }
+    #mutedBanner.show { opacity: 1; visibility: visible; transform: translateY(0); }
 
-	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
-	<script src="js/simplyCountdown.js"></script>
-	<!-- Main -->
-	<script src="js/main.js"></script>
-	<center>View Source Code on <a href="https://github.com/shyamjos/wedding-website">GitHub <img src="images/github-logo.png"> </a> </center>
-	</body>
+    /* ================================================
+       RESPONSIVE BREAKPOINTS
+    ================================================ */
+    @media (max-width: 960px) {
+      .attire-layout { grid-template-columns: 1fr; gap: 32px; }
+      .attire-info-col { height: auto; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-pad: 70px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .details-grid { grid-template-columns: 1fr; gap: 28px; }
+      .map-full { grid-column: 1; }
+      .map-container { padding-bottom: 70%; }
+      .attire-info-col { padding: 36px 28px; }
+      .attire-dress-types { grid-template-columns: 1fr 1fr; }
+      .rsvp-input-group { flex-direction: column; }
+      .rsvp-input { border-right: 1px solid rgba(201,168,108,0.3); }
+      .rsvp-btn { width: 100%; }
+      .modal { padding: 36px 28px; }
+      .attendance-options { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .countdown { gap: 12px; }
+      .countdown-sep { display: none; }
+      #scrollTop { bottom: 84px; right: 16px; }
+      #musicBtn  { bottom: 24px; right: 16px; }
+      #mutedBanner { right: 68px; bottom: 28px; }
+    }
+    @media (max-width: 480px) {
+      :root { --section-pad: 52px; }
+      nav { padding: 16px 20px; }
+      nav.scrolled { padding: 12px 20px; }
+      .container, .container-narrow { padding: 0 20px; }
+      .modal { padding: 28px 20px; max-height: 95vh; }
+      .modal-title { font-size: 1.5rem; }
+      .attendance-options { grid-template-columns: 1fr; }
+      .attire-dress-types { grid-template-columns: 1fr; }
+      .swatch-circle { width: 34px; height: 34px; }
+      #scrollTop { bottom: 80px; right: 14px; width: 40px; height: 40px; }
+      #musicBtn  { bottom: 22px; right: 14px; width: 40px; height: 40px; }
+      .attire-info-col { padding: 28px 18px; }
+      .attire-palette-box { padding: 26px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loader">
+    <div class="loader-names">Paul &amp; Nica</div>
+    <div class="loader-line"></div>
+  </div>
+
+  <!--
+  ============================================================
+  BACKGROUND AUDIO
+  ─────────────────────────────────────────────────────────────
+  Google Drive direct links are blocked by CORS & autoplay
+  policies in modern browsers.
+
+  RECOMMENDED ALTERNATIVES (pick one):
+  ──────────────────────────────────────
+  1. HOST THE FILE WITH YOUR PROJECT (best for Vercel)
+     • Add your .mp3 to your project folder  →  /public/music.mp3
+     • Change src below to:  src="music.mp3"
+     • Vercel will serve it as a static asset — guaranteed to work.
+
+  2. CLOUDINARY (free CDN, no CORS issues)
+     • Upload at cloudinary.com (free account)
+     • Use the direct mp3 URL they give you
+
+  3. GITHUB RAW (free, works for small files)
+     • Push the .mp3 to a public GitHub repo
+     • Use: https://raw.githubusercontent.com/USER/REPO/main/music.mp3
+
+  The src below is set to "music.mp3" — place your file next to
+  index.html and it will work on Vercel with zero extra config.
+  ============================================================
+  -->
+  <audio
+    id="bgAudio"
+    loop
+    preload="auto"
+    style="position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;"
+    aria-hidden="true"
+  >
+    <!--
+      ★ CHANGE THIS SRC to your actual audio file path.
+      ★ Recommended: place music.mp3 next to index.html → src="music.mp3"
+    -->
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- NAVIGATION -->
+  <nav id="mainNav">
+    <div class="nav-logo">Paul &amp; Nica</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#details">Wedding Details</a></li>
+      <li><a href="#attire">Attire</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-nav" id="closeNav">✕</button>
+    <a href="#hero"    onclick="closeMobileNav()">Home</a>
+    <a href="#details" onclick="closeMobileNav()">Wedding Details</a>
+    <a href="#attire"  onclick="closeMobileNav()">Attire</a>
+    <a href="#rsvp"    onclick="closeMobileNav()">RSVP</a>
+  </div>
+
+  <!-- ========================================================
+       HERO SECTION
+  ======================================================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">We are getting married</span>
+      <h1 class="hero-names">Paul <span class="hero-ampersand">&amp;</span> Nica</h1>
+
+      <div class="hero-divider">
+        <div class="hero-divider-line"></div>
+        <div class="hero-divider-diamond"></div>
+        <div class="hero-divider-line"></div>
+      </div>
+
+      <div class="hero-date">April 29, 2026</div>
+      <div class="hero-venue">The Bellevue Manila · Alabang, Muntinlupa City</div>
+      <div class="hero-verse">
+        "I have found the one whom my soul loves."
+        <span>— Song of Solomon 3:4</span>
+      </div>
+      <div class="countdown-wrap">
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-num" id="cd-days">00</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-sep">·</div>
+          <div class="countdown-item">
+            <div class="countdown-num" id="cd-hours">00</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-sep">·</div>
+          <div class="countdown-item">
+            <div class="countdown-num" id="cd-mins">00</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-sep">·</div>
+          <div class="countdown-item">
+            <div class="countdown-num" id="cd-secs">00</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+        <a href="#details" class="hero-cta">Save Our Date</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- WEDDING DETAILS SECTION -->
+  <section id="details">
+    <div class="container">
+      <span class="section-eyebrow reveal">Wedding Details</span>
+      <h2 class="section-title reveal">The Celebration</h2>
+
+      <div class="section-divider-lily reveal">
+        <div class="sdl-line"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.6"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.8"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="sdl-diamond"></div>
+        <svg style="transform:scaleX(-1)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.6"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.8"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="sdl-line"></div>
+      </div>
+
+      <div class="details-grid">
+        <div class="detail-card reveal">
+          <h4 class="detail-card-label">When</h4>
+          <h3>April 29, 2026</h3>
+          <p>Join us on a beautiful Wednesday evening as we begin our forever together.</p>
+          <span class="detail-time">Ceremony begins at 6:00 PM</span>
+        </div>
+        <div class="detail-card reveal" style="transition-delay:.1s">
+          <h4 class="detail-card-label">Where</h4>
+          <h3>The Bellevue Manila</h3>
+          <p>5139 North Bridgeway, Filinvest City,<br>Alabang, Muntinlupa City,<br>Philippines 1781</p>
+          <span class="detail-time">Reception to follow</span>
+        </div>
+        <div class="map-full reveal" style="transition-delay:.2s">
+          <div class="directions-heading">Getting There</div>
+          <p class="directions-sub">The Bellevue Manila is located in the heart of Filinvest City, Alabang. Ample parking is available on-site.</p>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.0536128300623!2d121.03707817484135!3d14.424072981374765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d0318199738f%3A0x2f1a8faee3496f66!2sThe%20Bellevue%20Manila!5e0!3m2!1sen!2sph!4v1771313739484!5m2!1sen!2sph"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="The Bellevue Manila location">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEDDING ATTIRE SECTION -->
+  <section id="attire">
+    <div class="container">
+      <span class="section-eyebrow reveal">Dress Code</span>
+      <h2 class="section-title reveal">Wedding Attire</h2>
+
+      <div class="section-divider-lily reveal">
+        <div class="sdl-line"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.6"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.8"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="sdl-diamond"></div>
+        <svg style="transform:scaleX(-1)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.6"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.8"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none"/>
+        </svg>
+        <div class="sdl-line"></div>
+      </div>
+
+      <div class="attire-layout">
+
+        <!-- LEFT: Dress Code Info -->
+        <div class="attire-info-col reveal">
+          <span class="attire-section-label">Dress Code</span>
+          <h3>Formal Attire</h3>
+          <p>
+            We invite you to celebrate with us in formal attire.
+            Choose from the vibrant, celebratory color palette —
+            rich jewel tones, warm earth hues, and soft pastels
+            that will beautifully complement our ceremony.
+          </p>
+          <p>We want our guests to feel joyful and stunning.</p>
+
+          <div class="attire-dress-types">
+            <div class="attire-dress-type">
+              <span class="dress-label">Gentlemen</span>
+              <span class="dress-desc">Grey or charcoal suit, or coat &amp; tie</span>
+            </div>
+            <div class="attire-dress-type">
+              <span class="dress-label">Ladies</span>
+              <span class="dress-desc">Long gown or formal cocktail dress</span>
+            </div>
+          </div>
+
+          <div class="attire-note">Please avoid wearing white</div>
+        </div>
+
+        <!-- RIGHT: Color Palette + Image -->
+        <div class="attire-palette-col reveal" style="transition-delay:.12s">
+
+          <div class="attire-palette-box">
+            <div class="attire-palette-title">Color Palette</div>
+
+            <div class="palette-group">
+              <div class="palette-group-label">For the Gentlemen</div>
+              <div class="palette-swatches">
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#b0b8c4;"></div>
+                  <div class="swatch-name">Light<br>Grey</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#8a8f96;"></div>
+                  <div class="swatch-name">Steel<br>Grey</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#6b7080;"></div>
+                  <div class="swatch-name">Slate<br>Grey</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#4a4f5a;"></div>
+                  <div class="swatch-name">Charcoal<br>Grey</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="palette-group">
+              <div class="palette-group-label">For the Ladies</div>
+              <div class="palette-swatches">
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#2d5a3d;"></div>
+                  <div class="swatch-name">Forest<br>Green</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#c4919e;"></div>
+                  <div class="swatch-name">Mauve<br>Pink</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#c9962b;"></div>
+                  <div class="swatch-name">Mustard<br>Gold</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#9ac5d5;"></div>
+                  <div class="swatch-name">Sky<br>Blue</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#d4783a;"></div>
+                  <div class="swatch-name">Burnt<br>Orange</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#e8d875;"></div>
+                  <div class="swatch-name">Butter<br>Yellow</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#7a8c3a;"></div>
+                  <div class="swatch-name">Olive<br>Green</div>
+                </div>
+                <div class="swatch-item">
+                  <div class="swatch-circle" style="background:#d63f7c;"></div>
+                  <div class="swatch-name">Hot<br>Fuchsia</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="attire-ref-img">
+            <img
+              src="1771318339967_image.png"
+              alt="Wedding attire color palette reference"
+              loading="lazy"
+              onerror="this.parentElement.style.display='none'"
+            >
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP SECTION -->
+  <section id="rsvp">
+    <div class="container-narrow" style="position:relative;z-index:2;">
+      <span class="section-eyebrow reveal">Kindly Reply</span>
+      <h2 class="section-title reveal">RSVP</h2>
+
+      <div class="section-divider-lily reveal">
+        <div class="sdl-line"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c" opacity="0.7"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.45"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.65"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none" opacity="0.7"/>
+        </svg>
+        <div class="sdl-diamond"></div>
+        <svg style="transform:scaleX(-1)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none">
+          <path d="M12 52 C10 38 16 26 22 14 C26 22 24 36 18 44Z" fill="#c9a86c" opacity="0.7"/>
+          <path d="M16 54 C18 36 26 22 34 12 C32 24 26 38 22 46Z" fill="#c9a86c" opacity="0.45"/>
+          <path d="M18 54 C17 38 19 22 21 8" stroke="#c9a86c" stroke-width="1.5" fill="none" opacity="0.7"/>
+          <path d="M21 8 C17 2 22 -2 27 1 C32 4 33 11 29 16 C26 19 21 18 21 8Z" fill="#c9a86c" opacity="0.65"/>
+          <path d="M25 16 C25 11 26 5 27 1" stroke="#c9a86c" stroke-width="1" fill="none" opacity="0.7"/>
+        </svg>
+        <div class="sdl-line"></div>
+      </div>
+
+      <p class="rsvp-intro reveal">
+        Please enter your name exactly as it appears on your invitation to confirm your attendance.
+      </p>
+      <div class="rsvp-form-wrap reveal">
+        <div class="rsvp-input-group">
+          <input
+            type="text" id="rsvpName" class="rsvp-input"
+            placeholder="Enter your full name…" autocomplete="off"
+          />
+          <button class="rsvp-btn" onclick="checkGuest()">Find Me</button>
+        </div>
+        <div id="rsvpMsg" class="rsvp-message" role="alert" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP MODAL -->
+  <div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+      <!-- Form state -->
+      <div id="modalForm">
+        <div class="modal-header">
+          <span class="modal-eyebrow">You're on the list!</span>
+          <div class="modal-title">Welcome, <span class="modal-guest-name" id="modalGuestName"></span></div>
+        </div>
+        <div class="modal-form">
+          <div class="input-group">
+            <label class="input-label" for="modalEmail">Email Address</label>
+            <input type="email" class="modal-input" id="modalEmail" placeholder="your@email.com" autocomplete="email"/>
+          </div>
+          <div>
+            <span class="attendance-label">Will you attend?</span>
+            <div class="attendance-options">
+              <div class="attendance-option attend-yes">
+                <input type="radio" name="attendance" id="attend-yes" value="Will Attend">
+                <label for="attend-yes">✓ I Will Attend</label>
+              </div>
+              <div class="attendance-option attend-no">
+                <input type="radio" name="attendance" id="attend-no" value="Will Not Attend">
+                <label for="attend-no">✗ I Will Not Attend</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-form-message" id="modalMsg" role="alert" aria-live="polite"></div>
+          <button class="modal-submit" id="submitBtn" onclick="submitRSVP()">Confirm RSVP</button>
+        </div>
+      </div>
+
+      <!-- Success state -->
+      <div class="modal-success" id="modalSuccess">
+        <div class="modal-success-icon">💌</div>
+        <h3>Thank you!</h3>
+        <p id="modalSuccessMsg"></p>
+        <button class="close-success-btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- Music Toggle Button -->
+  <button id="musicBtn" aria-label="Toggle background music" onclick="toggleMusic()">
+    <span id="musicIcon">♪</span>
+    <span class="music-tooltip" id="musicTooltip">Play Music</span>
+  </button>
+
+  <!-- Muted autoplay notification -->
+  <div id="mutedBanner">🔇 Tap ♪ to unmute</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-names">Paul &amp; Nica</div>
+    <div class="footer-date">April 29, 2026</div>
+    <div class="footer-divider"></div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       GUEST DATABASE
+    ============================================================ */
+    const GUEST_LIST = [
+      "John Paul M. Veneracion","Pastor Rosalyn M. Veneracion",
+      "Joanna Mae M. Veneracion","John Lloyd M. Veneracion",
+      "Pastor Rodolfo I. Veneracion Jr.","Pastor Annabel S. Veneracion",
+      "Roanne V. Canlas","Jairus John G. Canlas","Sky Eloise V. Canlas",
+      "Baby Sephaniah Luna V. Canlas","Marie Joy S. Veneracion",
+      "Baby Rodolfo Gabriel Luis Veneracion","Neriza V. Garcia",
+      "Mamerto R. Garcia","Wilfredo I. Veneracion","Norman Gahol",
+      "Elizabeth V. Gahol","Jeffrey Comia","Mhayen Comia",
+      "Josephine San Agustin","Johnny Escamillas","Nelia Escamillas",
+      "Michael Dimapilis","Carlo Pusta","Deaconess Vicky Comia",
+      "Jennica D. Ergina","Pastor Annaliza D. Ergina","Pastor Josegino F. Ergina",
+      "Gian Carlo D. Ergina","John Michael D. Ergina","Mary Louise V. Ergina",
+      "Leah E. Giron","Roby E. Giron","Patricia E. Giron","Sherrynill Maño",
+      "Treykin Jaberina","Baby Ezekiel Jaberina","Chonabeth Matulac",
+      "Arthur Matulac","Abbygail Matulac","Faith Ann Matulac",
+      "Deacon Celedonio Viray","Deaconess Lucila Declaro",
+      "Pastor Zesner Espinosa","Elhieza Espinos","Rodjen Abujuela",
+      "Marina Vergara","Mario Vergara","Baby Merry Jonest P. Tajonera",
+      "Perla Abejuela","Carlo P. Tajonera","Ma. Marlen P. Tajonera",
+      "Pastor Leslie Santos","Pastor Ludwig Santos","Jocelyn I. Felicilda",
+      "Maximono Felicilda Jr.","Julia Robillos","Ted Robillos",
+      "Bishop Luis R. Santos","Pastor Norma Santos","Elder Anicia Cahapay",
+      "Elder Jovita Orlain","Elder Rosario Bernardino","Deaconess Raquel Santos",
+      "Elder Weily Santos","Airriance Santos","Rhod Pante","Bishop's Driver",
+      "Keith Cruz","Vanesa Cruz","Charmain Pusta"
+    ];
+
+    /* ============================================================
+       GOOGLE SHEETS URL
+    ============================================================ */
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxagdxPnRwOs8bQxmWTbgQ1IIJh9xznY7txHkmfVOTq6TUgMoR1rIHG6F-p30tQMM2rWQ/exec";
+
+    /* ============================================================
+       LOADER
+    ============================================================ */
+    window.addEventListener("load", () => {
+      setTimeout(() => document.getElementById("loader").classList.add("hidden"), 1400);
+    });
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    const mainNav = document.getElementById("mainNav");
+    window.addEventListener("scroll", () => {
+      mainNav.classList.toggle("scrolled", window.scrollY > 60);
+      document.getElementById("scrollTop").classList.toggle("visible", window.scrollY > 400);
+    });
+    document.getElementById("hamburger").addEventListener("click", () => {
+      document.getElementById("mobileNav").classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+    document.getElementById("closeNav").addEventListener("click", closeMobileNav);
+    function closeMobileNav() {
+      document.getElementById("mobileNav").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    /* ============================================================
+       COUNTDOWN — Target: April 29, 2026 6:00 PM PHT (+08:00)
+    ============================================================ */
+    function updateCountdown() {
+      const target = new Date("2026-04-29T18:00:00+08:00").getTime();
+      const diff   = target - Date.now();
+      if (diff <= 0) {
+        ["cd-days","cd-hours","cd-mins","cd-secs"].forEach(id =>
+          document.getElementById(id).textContent = "00"
+        );
+        return;
+      }
+      const pad = n => String(Math.floor(n)).padStart(2, "0");
+      document.getElementById("cd-days").textContent  = pad(diff / 86400000);
+      document.getElementById("cd-hours").textContent = pad((diff % 86400000) / 3600000);
+      document.getElementById("cd-mins").textContent  = pad((diff % 3600000) / 60000);
+      document.getElementById("cd-secs").textContent  = pad((diff % 60000) / 1000);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("visible"); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+
+    /* ============================================================
+       RSVP — GUEST LOOKUP
+       FIX: Handles names with or without extra spaces, and is
+       case-insensitive. Exact normalized match required.
+    ============================================================ */
+    let currentGuest = "";
+
+    function normalizeName(str) {
+      // Collapse multiple spaces, trim, lowercase
+      return str.replace(/\s+/g, " ").trim().toLowerCase();
+    }
+
+    function checkGuest() {
+      const input = document.getElementById("rsvpName").value.trim();
+      const msgEl = document.getElementById("rsvpMsg");
+      if (!input) {
+        msgEl.className = "rsvp-message error";
+        msgEl.textContent = "Please enter your name.";
+        return;
+      }
+      const match = GUEST_LIST.find(g => normalizeName(g) === normalizeName(input));
+      if (match) {
+        currentGuest = match;
+        msgEl.className = "rsvp-message";
+        msgEl.textContent = "";
+        openModal(match);
+      } else {
+        msgEl.className = "rsvp-message error";
+        msgEl.textContent = "Sorry, your name is not on the guest list. Please contact the couple for assistance.";
+      }
+    }
+    document.getElementById("rsvpName").addEventListener("keydown", e => {
+      if (e.key === "Enter") checkGuest();
+    });
+
+    /* ============================================================
+       RSVP MODAL
+    ============================================================ */
+    function openModal(name) {
+      document.getElementById("modalGuestName").textContent = name;
+      document.getElementById("modalEmail").value = "";
+      document.getElementById("modalMsg").textContent = "";
+      document.getElementById("modalMsg").className = "modal-form-message";
+      document.querySelectorAll("input[name='attendance']").forEach(r => r.checked = false);
+      document.getElementById("submitBtn").disabled = false;
+      document.getElementById("modalForm").style.display = "";
+      document.getElementById("modalSuccess").classList.remove("show");
+      document.getElementById("rsvpModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => document.getElementById("modalEmail").focus(), 420);
+    }
+    function closeModal() {
+      document.getElementById("rsvpModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.getElementById("rsvpModal").addEventListener("click", function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+    /* ============================================================
+       RSVP SUBMIT
+       FIX: Added duplicate submission guard so the same guest
+       cannot submit twice in one session without refreshing.
+    ============================================================ */
+    const submittedGuests = new Set();
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    async function submitRSVP() {
+      const email      = document.getElementById("modalEmail").value.trim();
+      const attendance = document.querySelector("input[name='attendance']:checked");
+      const msgEl      = document.getElementById("modalMsg");
+      const btn        = document.getElementById("submitBtn");
+
+      if (!email) {
+        msgEl.className = "modal-form-message"; msgEl.textContent = "Please enter your email address."; return;
+      }
+      if (!isValidEmail(email)) {
+        msgEl.className = "modal-form-message"; msgEl.textContent = "Please enter a valid email (e.g. name@email.com)."; return;
+      }
+      if (!attendance) {
+        msgEl.className = "modal-form-message"; msgEl.textContent = "Please select your attendance."; return;
+      }
+      // Duplicate guard
+      if (submittedGuests.has(normalizeName(currentGuest))) {
+        msgEl.className = "modal-form-message"; msgEl.textContent = "You have already submitted your RSVP."; return;
+      }
+
+      btn.disabled = true;
+      msgEl.className = "modal-form-message sending";
+      msgEl.textContent = "Sending your RSVP…";
+
+      const payload = {
+        name:       currentGuest,
+        email:      email,
+        attendance: attendance.value
+      };
+
+      const isConfigured = GOOGLE_SHEET_URL &&
+        !GOOGLE_SHEET_URL.includes("YOUR_GOOGLE_APPS_SCRIPT");
+
+      try {
+        if (isConfigured) {
+          await fetch(GOOGLE_SHEET_URL, {
+            method:  "POST",
+            mode:    "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body:    JSON.stringify(payload)
+          });
+        } else {
+          // Dev mode — simulate network delay
+          await new Promise(r => setTimeout(r, 800));
+        }
+        submittedGuests.add(normalizeName(currentGuest));
+        showSuccess(attendance.value);
+      } catch (err) {
+        console.error("RSVP error:", err);
+        msgEl.className = "modal-form-message";
+        msgEl.textContent = "Something went wrong. Please try again or contact the couple directly.";
+        btn.disabled = false;
+      }
+    }
+
+    function showSuccess(attendanceValue) {
+      const attending = attendanceValue === "Will Attend";
+      const msg = attending
+        ? `We are so excited to have you with us, ${currentGuest}! We can't wait to celebrate together on April 29, 2026. 💛`
+        : `We'll miss you, ${currentGuest}, but we truly appreciate you letting us know. You will be in our hearts that day.`;
+      document.getElementById("modalForm").style.display = "none";
+      document.getElementById("modalSuccessMsg").textContent = msg;
+      document.getElementById("modalSuccess").classList.add("show");
+      setTimeout(closeModal, 7000);
+    }
+
+    /* ============================================================
+       BACKGROUND MUSIC
+       ─────────────────────────────────────────────────────────
+       Google Drive blocked audio via CORS in modern browsers.
+       The audio element now points to "music.mp3" — a local file
+       you place in the same folder as index.html before deploying
+       to Vercel. Vercel serves all static files automatically.
+
+       Toggle logic:
+       • On first load → browser tries autoplay
+       • If blocked  → falls back to muted autoplay + shows banner
+       • User taps ♪ → unmutes (or plays / pauses)
+    ============================================================ */
+    const audio   = document.getElementById("bgAudio");
+    let isMuted   = false;
+    let isPlaying = false;
+
+    audio.volume = 0.45;
+
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => { isPlaying = true; syncMusicButton(); })
+        .catch(() => { tryMutedAutoplay(); });
+    }
+
+    function tryMutedAutoplay() {
+      audio.muted = true;
+      audio.play()
+        .then(() => {
+          isMuted = true; isPlaying = true;
+          showMutedBanner(); syncMusicButton();
+        })
+        .catch(() => { isPlaying = false; syncMusicButton(); });
+    }
+
+    function showMutedBanner() {
+      const b = document.getElementById("mutedBanner");
+      b.classList.add("show");
+      setTimeout(() => b.classList.remove("show"), 5000);
+    }
+
+    function toggleMusic() {
+      if (isMuted) {
+        // Unmute
+        audio.muted = false;
+        audio.volume = 0.45;
+        isMuted = false;
+        isPlaying = true;
+        document.getElementById("mutedBanner").classList.remove("show");
+      } else if (isPlaying) {
+        // Pause
+        audio.pause();
+        isPlaying = false;
+      } else {
+        // Resume / start
+        audio.play()
+          .then(() => { isPlaying = true; syncMusicButton(); })
+          .catch(err => console.warn("Play blocked:", err));
+        return; // syncMusicButton called via playing event
+      }
+      syncMusicButton();
+    }
+
+    function syncMusicButton() {
+      const btn     = document.getElementById("musicBtn");
+      const icon    = document.getElementById("musicIcon");
+      const tooltip = document.getElementById("musicTooltip");
+      if (isMuted) {
+        icon.textContent = "🔇"; tooltip.textContent = "Unmute Music";
+        btn.classList.add("muted");
+      } else if (isPlaying) {
+        icon.textContent = "♫"; tooltip.textContent = "Pause Music";
+        btn.classList.remove("muted");
+        btn.style.borderColor = "rgba(201,168,108,0.7)";
+      } else {
+        icon.textContent = "♪"; tooltip.textContent = "Play Music";
+        btn.classList.remove("muted");
+        btn.style.borderColor = "rgba(201,168,108,0.4)";
+      }
+    }
+
+    audio.addEventListener("pause",   () => { if (!isMuted) { isPlaying = false; syncMusicButton(); } });
+    audio.addEventListener("playing", () => { isPlaying = true; syncMusicButton(); });
+  </script>
+</body>
 </html>
