@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paul &amp; Nica · April 29, 2026</title>
+  <title>Paul &amp; Nica · Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
@@ -889,7 +889,7 @@
 
   <!--
   ============================================================
-  BACKGROUND AUDIO - STARTS ON FIRST USER INTERACTION
+  BACKGROUND AUDIO - ATTEMPTS AUTOPLAY ON LOAD, FALLBACK TO USER INTERACTION
   ============================================================
   -->
   <audio
@@ -1275,33 +1275,141 @@
     /* ============================================================
        GUEST DATABASE
     ============================================================ */
-    const GUEST_LIST = [
-      "John Paul M. Veneracion","Pastor Rosalyn M. Veneracion",
-      "Joanna Mae M. Veneracion","John Lloyd M. Veneracion",
-      "Pastor Rodolfo I. Veneracion Jr.","Pastor Annabel S. Veneracion",
-      "Roanne V. Canlas","Jairus John G. Canlas","Sky Eloise V. Canlas",
-      "Baby Sephaniah Luna V. Canlas","Marie Joy S. Veneracion",
-      "Baby Rodolfo Gabriel Luis Veneracion","Neriza V. Garcia",
-      "Mamerto R. Garcia","Wilfredo I. Veneracion","Norman Gahol",
-      "Elizabeth V. Gahol","Jeffrey Comia","Mhayen Comia",
-      "Josephine San Agustin","Johnny Escamillas","Nelia Escamillas",
-      "Michael Dimapilis","Carlo Pusta","Deaconess Vicky Comia",
-      "Jennica D. Ergina","Pastor Annaliza D. Ergina","Pastor Josegino F. Ergina",
-      "Gian Carlo D. Ergina","John Michael D. Ergina","Mary Louise V. Ergina",
-      "Leah E. Giron","Roby E. Giron","Patricia E. Giron","Sherrynill Maño",
-      "Treykin Jaberina","Baby Ezekiel Jaberina","Chonabeth Matulac",
-      "Arthur Matulac","Abbygail Matulac","Faith Ann Matulac",
-      "Deacon Celedonio Viray","Deaconess Lucila Declaro",
-      "Pastor Zesner Espinosa","Elhieza Espinos","Rodjen Abujuela",
-      "Marina Vergara","Mario Vergara","Baby Merry Jonest P. Tajonera",
-      "Perla Abejuela","Carlo P. Tajonera","Ma. Marlen P. Tajonera",
-      "Pastor Leslie Santos","Pastor Ludwig Santos","Jocelyn I. Felicilda",
-      "Maximono Felicilda Jr.","Julia Robillos","Ted Robillos",
-      "Bishop Luis R. Santos","Pastor Norma Santos","Elder Anicia Cahapay",
-      "Elder Jovita Orlain","Elder Rosario Bernardino","Deaconess Raquel Santos",
-      "Elder Weily Santos","Airriance Santos","Rhod Pante","Bishop's Driver",
-      "Keith Cruz","Vanesa Cruz","Charmain Pusta"
-    ];
+const GUEST_LIST = [
+  // Veneracion
+  "John Paul M. Veneracion",
+  "John Paul Veneracion",
+
+  "Pastor Rosalyn M. Veneracion",
+  "Pastor Rosalyn Veneracion",
+
+  "Joanna Mae M. Veneracion",
+  "Joanna Mae Veneracion",
+
+  "John Lloyd M. Veneracion",
+  "John Lloyd Veneracion",
+
+  "Pastor Rodolfo I. Veneracion Jr.",
+  "Pastor Rodolfo Veneracion Jr.",
+
+  "Pastor Annabel S. Veneracion",
+  "Pastor Annabel Veneracion",
+
+  "Marie Joy S. Veneracion",
+  "Marie Joy Veneracion",
+
+  "Baby Rodolfo Gabriel Luis Veneracion",
+
+  "Wilfredo I. Veneracion",
+  "Wilfredo Veneracion",
+
+  // Canlas
+  "Roanne V. Canlas",
+  "Roanne Canlas",
+
+  "Jairus John G. Canlas",
+  "Jairus John Canlas",
+
+  "Sky Eloise V. Canlas",
+  "Sky Eloise Canlas",
+
+  "Baby Sephaniah Luna V. Canlas",
+  "Baby Sephaniah Luna Canlas",
+
+  // Garcia
+  "Neriza V. Garcia",
+  "Neriza Garcia",
+
+  "Mamerto R. Garcia",
+  "Mamerto Garcia",
+
+  // Gahol
+  "Norman Gahol",
+  "Elizabeth V. Gahol",
+  "Elizabeth Gahol",
+
+  // Comia
+  "Jeffrey Comia",
+  "Mhayen Comia",
+  "Deaconess Vicky Comia",
+
+  // Escamillas
+  "Johnny Escamillas",
+  "Nelia Escamillas",
+
+  // Ergina
+  "Jennica D. Ergina",
+  "Jennica Ergina",
+
+  "Pastor Annaliza D. Ergina",
+  "Pastor Annaliza Ergina",
+
+  "Pastor Josegino F. Ergina",
+  "Pastor Josegino Ergina",
+
+  "Gian Carlo D. Ergina",
+  "Gian Carlo Ergina",
+
+  "John Michael D. Ergina",
+  "John Michael Ergina",
+
+  "Mary Louise V. Ergina",
+  "Mary Louise Ergina",
+
+  // Giron
+  "Leah E. Giron",
+  "Leah Giron",
+
+  "Roby E. Giron",
+  "Roby Giron",
+
+  "Patricia E. Giron",
+  "Patricia Giron",
+
+  // Others (no MI needed)
+  "Sherrynill Maño",
+  "Treykin Jaberina",
+  "Baby Ezekiel Jaberina",
+  "Chonabeth Matulac",
+  "Arthur Matulac",
+  "Abbygail Matulac",
+  "Faith Ann Matulac",
+  "Deacon Celedonio Viray",
+  "Deaconess Lucila Declaro",
+  "Pastor Zesner Espinosa",
+  "Elhieza Espinos",
+  "Rodjen Abujuela",
+  "Marina Vergara",
+  "Mario Vergara",
+  "Baby Merry Jonest P. Tajonera",
+  "Perla Abejuela",
+  "Carlo P. Tajonera",
+  "Carlo Tajonera",
+  "Ma. Marlen P. Tajonera",
+  "Ma Marlen Tajonera",
+  "Pastor Leslie Santos",
+  "Pastor Ludwig Santos",
+  "Jocelyn I. Felicilda",
+  "Jocelyn Felicilda",
+  "Maximono Felicilda Jr.",
+  "Julia Robillos",
+  "Ted Robillos",
+  "Bishop Luis R. Santos",
+  "Bishop Luis Santos",
+  "Pastor Norma Santos",
+  "Elder Anicia Cahapay",
+  "Elder Jovita Orlain",
+  "Elder Rosario Bernardino",
+  "Deaconess Raquel Santos",
+  "Elder Weily Santos",
+  "Airriance Santos",
+  "Rhod Pante",
+  "Bishop's Driver",
+  "Keith Cruz",
+  "Vanesa Cruz",
+  "Charmain Pusta"
+];
+
 
     /* ============================================================
        GOOGLE SHEETS URL
@@ -1496,11 +1604,10 @@
     }
 
     /* ============================================================
-       FIXED BACKGROUND MUSIC - STARTS ON FIRST USER INTERACTION
+       BACKGROUND MUSIC - ATTEMPTS AUTOPLAY ON LOAD, FALLBACK TO USER INTERACTION
        ─────────────────────────────────────────────────────────
-       • No autoplay attempts
-       • Music starts only after first user click/tap anywhere
-       • Hidden audio element remains unchanged
+       • Tries to autoplay when page loads
+       • If blocked, starts on first user click/tap/keydown
        • Music button toggles play/pause after started
     ============================================================ */
     const audio = document.getElementById("bgAudio");
@@ -1510,8 +1617,8 @@
     // Set initial volume
     audio.volume = 0.45;
 
-    // Function to start music on first user interaction
-    function startMusicOnFirstInteraction() {
+    // Function to start music (used for autoplay attempt and first interaction)
+    function startMusic() {
       if (!hasStarted) {
         audio.play()
           .then(() => {
@@ -1526,25 +1633,42 @@
           })
           .catch(err => {
             console.log("Could not start music:", err);
+            // hasStarted remains false, interaction listeners will retry
           });
-        
-        // Remove listeners after first interaction
-        document.removeEventListener("click", startMusicOnFirstInteraction);
-        document.removeEventListener("touchstart", startMusicOnFirstInteraction);
-        document.removeEventListener("keydown", startMusicOnFirstInteraction);
       }
     }
 
-    // Add listeners for first user interaction
-    document.addEventListener("click", startMusicOnFirstInteraction);
-    document.addEventListener("touchstart", startMusicOnFirstInteraction);
-    document.addEventListener("keydown", startMusicOnFirstInteraction);
+    // Attempt autoplay when page is fully loaded
+    window.addEventListener('load', () => {
+      startMusic(); // try to autoplay
+    });
+
+    // Listeners for first user interaction (fallback if autoplay blocked)
+    document.addEventListener("click", function firstInteractionHandler() {
+      startMusic();
+      // Remove listeners after first successful start or any interaction
+      document.removeEventListener("click", firstInteractionHandler);
+      document.removeEventListener("touchstart", firstInteractionHandler);
+      document.removeEventListener("keydown", firstInteractionHandler);
+    });
+    document.addEventListener("touchstart", function firstInteractionHandler() {
+      startMusic();
+      document.removeEventListener("click", firstInteractionHandler);
+      document.removeEventListener("touchstart", firstInteractionHandler);
+      document.removeEventListener("keydown", firstInteractionHandler);
+    });
+    document.addEventListener("keydown", function firstInteractionHandler() {
+      startMusic();
+      document.removeEventListener("click", firstInteractionHandler);
+      document.removeEventListener("touchstart", firstInteractionHandler);
+      document.removeEventListener("keydown", firstInteractionHandler);
+    });
 
     // Main toggle function for play/pause (only works after music has started)
     function toggleMusic() {
       if (!hasStarted) {
         // If music hasn't started yet, trigger it now
-        startMusicOnFirstInteraction();
+        startMusic();
         return;
       }
       
