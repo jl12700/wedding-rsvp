@@ -1103,7 +1103,7 @@
             </div>
             <div class="attire-dress-type">
               <span class="dress-label">Ladies</span>
-              <span class="dress-desc">Long gown or formal cocktail dress</span>
+              <span class="dress-desc">Long gown or formal spring attire</span>
             </div>
           </div>
 
@@ -1214,13 +1214,13 @@
       </div>
 
       <p class="rsvp-intro reveal">
-        Please enter your name exactly as it appears on your invitation to confirm your attendance.
+        Please enter your first and last name to confirm your attendance.
       </p>
       <div class="rsvp-form-wrap reveal">
         <div class="rsvp-input-group">
           <input
             type="text" id="rsvpName" class="rsvp-input"
-            placeholder="Enter your full name…" autocomplete="off"
+            placeholder="Enter your name..." autocomplete="off"
           />
           <button class="rsvp-btn" onclick="checkGuest()">Find Me</button>
         </div>
@@ -1299,131 +1299,131 @@
     ============================================================ */
 const GUEST_LIST = [
   // Veneracion
-  "John Paul M. Veneracion",
+  "John Paul Veneracion",
   "John Paul Veneracion",
 
-  "Pastor Rosalyn M. Veneracion",
-  "Pastor Rosalyn Veneracion",
+  "Rosalyn Veneracion",
+  "Rosalyn Veneracion",
 
-  "Joanna Mae M. Veneracion",
+  "Joanna Mae Veneracion",
   "Joanna Mae Veneracion",
 
-  "John Lloyd M. Veneracion",
+  "John Lloyd Veneracion",
   "John Lloyd Veneracion",
 
-  "Pastor Rodolfo I. Veneracion Jr.",
-  "Pastor Rodolfo Veneracion Jr.",
+  "Rodolfo Veneracion Jr.",
+  "Rodolfo Veneracion Jr.",
 
-  "Pastor Annabel S. Veneracion",
-  "Pastor Annabel Veneracion",
+  "Annabel Veneracion",
+  "Annabel Veneracion",
 
-  "Marie Joy S. Veneracion",
+  "Marie Joy Veneracion",
   "Marie Joy Veneracion",
 
-  "Baby Rodolfo Gabriel Luis Veneracion",
+  "Rodolfo Gabriel Luis Veneracion",
 
-  "Wilfredo I. Veneracion",
+  "Wilfredo Veneracion",
   "Wilfredo Veneracion",
 
   // Canlas
-  "Roanne V. Canlas",
+  "Roanne Canlas",
   "Roanne Canlas",
 
-  "Jairus John G. Canlas",
+  "Jairus John Canlas",
   "Jairus John Canlas",
 
-  "Sky Eloise V. Canlas",
+  "Sky Eloise Canlas",
   "Sky Eloise Canlas",
 
-  "Baby Sephaniah Luna V. Canlas",
-  "Baby Sephaniah Luna Canlas",
+  "Sephaniah Luna Canlas",
+  "Sephaniah Luna Canlas",
 
   // Garcia
-  "Neriza V. Garcia",
+  "Neriza Garcia",
   "Neriza Garcia",
 
-  "Mamerto R. Garcia",
+  "Mamerto Garcia",
   "Mamerto Garcia",
 
   // Gahol
   "Norman Gahol",
-  "Elizabeth V. Gahol",
+  "Elizabeth Gahol",
   "Elizabeth Gahol",
 
   // Comia
   "Jeffrey Comia",
   "Mhayen Comia",
-  "Deaconess Vicky Comia",
+  "Vicky Comia",
 
   // Escamillas
   "Johnny Escamillas",
   "Nelia Escamillas",
 
   // Ergina
-  "Jennica D. Ergina",
+  "Jennica Ergina",
   "Jennica Ergina",
 
-  "Pastor Annaliza D. Ergina",
-  "Pastor Annaliza Ergina",
+  "Annaliza Ergina",
+  "Annaliza Ergina",
 
-  "Pastor Josegino F. Ergina",
-  "Pastor Josegino Ergina",
+  "Josegino Ergina",
+  "Josegino Ergina",
 
-  "Gian Carlo D. Ergina",
+  "Gian Carlo Ergina",
   "Gian Carlo Ergina",
 
-  "John Michael D. Ergina",
+  "John Michael Ergina",
   "John Michael Ergina",
 
-  "Mary Louise V. Ergina",
+  "Mary Louise Ergina",
   "Mary Louise Ergina",
 
   // Giron
-  "Leah E. Giron",
+  "Leah Giron",
   "Leah Giron",
 
-  "Roby E. Giron",
+  "Roby Giron",
   "Roby Giron",
 
-  "Patricia E. Giron",
+  "Patricia Giron",
   "Patricia Giron",
 
-  // Others (no MI needed)
+  // Others
   "Sherrynill Maño",
   "Treykin Jaberina",
-  "Baby Ezekiel Jaberina",
+  "Ezekiel Jaberina",
   "Chonabeth Matulac",
   "Arthur Matulac",
   "Abbygail Matulac",
   "Faith Ann Matulac",
-  "Deacon Celedonio Viray",
-  "Deaconess Lucila Declaro",
-  "Pastor Zesner Espinosa",
-  "Elhieza Espinos",
+  "Celedonio Viray",
+  "Lucila Declaro",
+  "Zesner Espinosa",
+  "Elhieza Espinosa",
   "Rodjen Abujuela",
   "Marina Vergara",
   "Mario Vergara",
-  "Baby Merry Jonest P. Tajonera",
+  "Merry Jonest Tajonera",
   "Perla Abejuela",
-  "Carlo P. Tajonera",
   "Carlo Tajonera",
-  "Ma. Marlen P. Tajonera",
+  "Carlo Tajonera",
+  "Ma. Marlen Tajonera",
   "Ma Marlen Tajonera",
-  "Pastor Leslie Santos",
-  "Pastor Ludwig Santos",
-  "Jocelyn I. Felicilda",
+  "Leslie Santos",
+  "Ludwig Santos",
+  "Jocelyn Felicilda",
   "Jocelyn Felicilda",
   "Maximono Felicilda Jr.",
   "Julia Robillos",
   "Ted Robillos",
-  "Bishop Luis R. Santos",
-  "Bishop Luis Santos",
-  "Pastor Norma Santos",
-  "Elder Anicia Cahapay",
-  "Elder Jovita Orlain",
-  "Elder Rosario Bernardino",
-  "Deaconess Raquel Santos",
-  "Elder Weily Santos",
+  "Luis Santos",
+  "Luis Santos",
+  "Norma Santos",
+  "Anicia Cahapay",
+  "Jovita Orlain",
+  "Rosario Bernardino",
+  "Raquel Santos",
+  "Weily Santos",
   "Airriance Santos",
   "Rhod Pante",
   "Bishop's Driver",
@@ -1431,6 +1431,7 @@ const GUEST_LIST = [
   "Vanesa Cruz",
   "Charmain Pusta"
 ];
+
 
 
     /* ============================================================
