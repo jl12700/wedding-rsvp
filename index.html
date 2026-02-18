@@ -57,8 +57,19 @@
       justify-content: center;
       gap: 20px;
       transition: opacity 0.8s ease, visibility 0.8s ease;
+      cursor: pointer; /* indicate clickable */
     }
     #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .loader-greeting {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 300;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+      margin-bottom: -10px;
+    }
+
     .loader-names {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.5rem, 6vw, 4rem);
@@ -70,6 +81,16 @@
       width: 60px; height: 1px;
       background: var(--gold);
       animation: loaderExpand 1.5s ease infinite;
+    }
+    /* ADDED: hint text style */
+    .loader-hint {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 10px;
+      opacity: 0.7;
     }
     @keyframes loaderExpand {
       0%,100% { width: 60px; opacity: 0.4; }
@@ -172,9 +193,6 @@
 
     /* ================================================
        HERO SECTION
-       FIX: Removed excessive top padding — content
-       is now truly vertically centred in the viewport.
-       The nav is fixed/overlay so no offset needed.
     ================================================ */
     #hero {
       position: relative;
@@ -881,15 +899,18 @@
 </head>
 <body>
 
-  <!-- LOADING SCREEN -->
+  <!-- LOADING SCREEN (CHANGED: added greeting text and click hint) -->
   <div id="loader">
+    <div class="loader-greeting">Greetings from</div>
     <div class="loader-names">PAUL &amp; NICA</div>
     <div class="loader-line"></div>
+    <!-- ADDED: hint text -->
+    <div class="loader-hint">Click anywhere to continue</div>
   </div>
 
   <!--
   ============================================================
-  BACKGROUND AUDIO - ATTEMPTS AUTOPLAY ON LOAD, FALLBACK TO USER INTERACTION
+  BACKGROUND AUDIO - NO AUTOPLAY
   ============================================================
   -->
   <audio
@@ -1208,7 +1229,7 @@
     </div>
   </section>
 
-  <!-- RSVP MODAL -->
+  <!-- RSVP MODAL (CHANGED: email field updated) -->
   <div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true">
     <div class="modal">
       <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
@@ -1221,8 +1242,9 @@
         </div>
         <div class="modal-form">
           <div class="input-group">
-            <label class="input-label" for="modalEmail">Email Address</label>
-            <input type="email" class="modal-input" id="modalEmail" placeholder="your@email.com" autocomplete="email"/>
+            <!-- CHANGED: label and input for email/phone -->
+            <label class="input-label" for="modalEmail">Email Address or Phone Number</label>
+            <input type="text" class="modal-input" id="modalEmail" placeholder="your@email.com or phone number" autocomplete="off"/>
           </div>
           <div>
             <span class="attendance-label">Will you attend?</span>
@@ -1417,10 +1439,15 @@ const GUEST_LIST = [
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxagdxPnRwOs8bQxmWTbgQ1IIJh9xznY7txHkmfVOTq6TUgMoR1rIHG6F-p30tQMM2rWQ/exec";
 
     /* ============================================================
-       LOADER
+       LOADER (CHANGED: no auto‑hide, added click handler)
     ============================================================ */
-    window.addEventListener("load", () => {
-      setTimeout(() => document.getElementById("loader").classList.add("hidden"), 1400);
+    // window.addEventListener("load", () => {
+    //   setTimeout(() => document.getElementById("loader").classList.add("hidden"), 1400);
+    // });
+
+    document.getElementById("loader").addEventListener("click", function loaderClick() {
+      this.classList.add("hidden");
+      startMusic(); // defined below
     });
 
     /* ============================================================
@@ -1474,8 +1501,6 @@ const GUEST_LIST = [
 
     /* ============================================================
        RSVP — GUEST LOOKUP
-       FIX: Handles names with or without extra spaces, and is
-       case-insensitive. Exact normalized match required.
     ============================================================ */
     let currentGuest = "";
 
@@ -1533,14 +1558,9 @@ const GUEST_LIST = [
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
     /* ============================================================
-       RSVP SUBMIT - FIXED
-       Removed no-cors mode to allow proper response handling
+       RSVP SUBMIT - CHANGED: email validation removed, now accepts any non‑empty string
     ============================================================ */
     const submittedGuests = new Set();
-
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
 
     async function submitRSVP() {
       const email      = document.getElementById("modalEmail").value.trim();
@@ -1548,11 +1568,9 @@ const GUEST_LIST = [
       const msgEl      = document.getElementById("modalMsg");
       const btn        = document.getElementById("submitBtn");
 
+      // CHANGED: only check non‑empty
       if (!email) {
-        msgEl.className = "modal-form-message"; msgEl.textContent = "Please enter your email address."; return;
-      }
-      if (!isValidEmail(email)) {
-        msgEl.className = "modal-form-message"; msgEl.textContent = "Please enter a valid email (e.g. name@email.com)."; return;
+        msgEl.className = "modal-form-message"; msgEl.textContent = "Please enter your email address or phone number."; return;
       }
       if (!attendance) {
         msgEl.className = "modal-form-message"; msgEl.textContent = "Please select your attendance."; return;
@@ -1575,12 +1593,11 @@ const GUEST_LIST = [
       try {
         const response = await fetch(GOOGLE_SHEET_URL, {
           method: "POST",
-          mode: "no-cors", // Keep no-cors but we'll handle it differently
+          mode: "no-cors",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
         
-        // With no-cors, we can't read response, so assume success
         submittedGuests.add(normalizeName(currentGuest));
         showSuccess(attendance.value);
         
@@ -1604,11 +1621,7 @@ const GUEST_LIST = [
     }
 
     /* ============================================================
-       BACKGROUND MUSIC - ATTEMPTS AUTOPLAY ON LOAD, FALLBACK TO USER INTERACTION
-       ─────────────────────────────────────────────────────────
-       • Tries to autoplay when page loads
-       • If blocked, starts on first user click/tap/keydown
-       • Music button toggles play/pause after started
+       BACKGROUND MUSIC - CHANGED: no autoplay, only starts on loader click
     ============================================================ */
     const audio = document.getElementById("bgAudio");
     let isPlaying = false;
@@ -1617,7 +1630,7 @@ const GUEST_LIST = [
     // Set initial volume
     audio.volume = 0.45;
 
-    // Function to start music (used for autoplay attempt and first interaction)
+    // startMusic now only called from loader click
     function startMusic() {
       if (!hasStarted) {
         audio.play()
@@ -1625,7 +1638,6 @@ const GUEST_LIST = [
             hasStarted = true;
             isPlaying = true;
             syncMusicButton();
-            // Show banner briefly to indicate music started
             const banner = document.getElementById("mutedBanner");
             banner.textContent = "♪ Music playing";
             banner.classList.add("show");
@@ -1633,42 +1645,14 @@ const GUEST_LIST = [
           })
           .catch(err => {
             console.log("Could not start music:", err);
-            // hasStarted remains false, interaction listeners will retry
           });
       }
     }
 
-    // Attempt autoplay when page is fully loaded
-    window.addEventListener('load', () => {
-      startMusic(); // try to autoplay
-    });
-
-    // Listeners for first user interaction (fallback if autoplay blocked)
-    document.addEventListener("click", function firstInteractionHandler() {
-      startMusic();
-      // Remove listeners after first successful start or any interaction
-      document.removeEventListener("click", firstInteractionHandler);
-      document.removeEventListener("touchstart", firstInteractionHandler);
-      document.removeEventListener("keydown", firstInteractionHandler);
-    });
-    document.addEventListener("touchstart", function firstInteractionHandler() {
-      startMusic();
-      document.removeEventListener("click", firstInteractionHandler);
-      document.removeEventListener("touchstart", firstInteractionHandler);
-      document.removeEventListener("keydown", firstInteractionHandler);
-    });
-    document.addEventListener("keydown", function firstInteractionHandler() {
-      startMusic();
-      document.removeEventListener("click", firstInteractionHandler);
-      document.removeEventListener("touchstart", firstInteractionHandler);
-      document.removeEventListener("keydown", firstInteractionHandler);
-    });
-
     // Main toggle function for play/pause (only works after music has started)
     function toggleMusic() {
       if (!hasStarted) {
-        // If music hasn't started yet, trigger it now
-        startMusic();
+        // If music hasn't started yet, do nothing (only loader click can start)
         return;
       }
       
@@ -1704,7 +1688,6 @@ const GUEST_LIST = [
       }
     }
 
-    // Event listeners to keep UI in sync
     audio.addEventListener("pause", () => {
       isPlaying = false;
       syncMusicButton();
@@ -1715,7 +1698,6 @@ const GUEST_LIST = [
       syncMusicButton();
     });
     
-    // Handle audio errors
     audio.addEventListener("error", (e) => {
       console.error("Audio error:", e);
       const tooltip = document.getElementById("musicTooltip");
